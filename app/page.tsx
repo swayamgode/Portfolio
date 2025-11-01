@@ -5,9 +5,6 @@ const page = () => {
   return (
     <div>
       <div className='container'>
-        <div className="img">
-          
-        </div>
         <div className="text">
          <Hero/>
         </div>

@@ -1,6 +1,8 @@
+'use client';
 import React from 'react'
 import Image from 'next/image'
-
+import CatHover from '../components/CatHover'
+import '../globals.css'
 const Hero = () => {
   return (
     <>
@@ -23,6 +25,10 @@ const Hero = () => {
         <p className="Subtitle">
           A Passionate Full-Stack Developer Crafting Seamless Web Experiences
         </p>
+      </div>
+      
+      <div className="car">
+        <CatHover/>
       </div>
     </div>
   

@@ -58,3 +58,14 @@
   width: 170px;
    margin: -25px 0 -25px 0; /* Adjust positioning */
 }
+
+.car{ 
+  margin-left: 30px;
+  height: 120px;
+  width: 100px;
+}
+
+/* Add to your CSS */
+.inverted {
+  filter: invert(1);
+}
