@@ -1,14 +1,16 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Details from './components/Details'
 const page = () => {
   return (
-    <div>
-      <div className='container'>
+    <div className='container'>
+      <div>
         <div className="text">
          <Hero/>
         </div>
       </div>
+      <Details/>
     </div>
   )
 }

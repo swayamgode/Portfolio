@@ -7,13 +7,18 @@ import Icon from "../components/icons/logo2.svg";
 
 function Navbar() {
   return (
-    <div className='navcon'>
-      <Icon  className="logo" onClick={handleSvgClick}/>
-      <Link className="navitem" href="/">Home</Link>
-      <Link className="navitem" href="/about">About</Link>
-      <Link className="navitem" href="/projects">Projects</Link>
-      <Link className="navitem" href="/contact">Contact</Link>
+    <>
+    <div className="conte">
+        <Icon  className="logo" onClick={handleSvgClick}/>
+        <div className='navcon'>
+          <Link className="navitem" href="/">Home</Link>
+          <Link className="navitem" href="/about">About</Link>
+          <Link className="navitem" href="/projects">Projects</Link>
+          <Link className="navitem" href="/contact">Contact</Link>
+        </div>
     </div>
+    </>
+
   )
 }
 

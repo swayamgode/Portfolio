@@ -15,8 +15,8 @@
 
 .navcon{
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   align-items: left;
   padding: 20px;
   background-color: #000000;
@@ -26,8 +26,15 @@
   padding: 10px;
   font-weight: 600;
 }
+
+.navitem:hover{
+  color: #ff5733;
+  cursor: pointer;
+  transition: 0.3s;
+}
 .con{
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -68,4 +75,76 @@
 /* Add to your CSS */
 .inverted {
   filter: invert(1);
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container .hover-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.image-container:hover .default-img {
+  opacity: 0;
+}
+
+.image-container:hover .hover-img {
+  opacity: 1;
+}
+
+.profileImg {
+  transition: opacity 0.3s ease;
+}
+
+.details-container{
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  margin: 0 200px 0 200px;
+  
+  gap: 10px;
+}
+
+.details-title{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.conte{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.oa{
+  padding: 10px;
+  gap: 10px;
 }
