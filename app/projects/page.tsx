@@ -1,11 +1,18 @@
-import React from 'react'
+import { Metadata } from 'next';
+import ProjectsSection from '../components/ProjectsSection';
+import { projects } from '../data/project';
 
-function page() {
+export const metadata: Metadata = {
+  title: 'Projects | Your Name',
+  description: 'Explore my portfolio of web development projects built with modern technologies.',
+};
+
+const ProjectsPage: React.FC = () => {
   return (
-    <div>
-      projects page
-    </div>
-  )
-}
+    <main>
+      <ProjectsSection projects={projects} />
+    </main>
+  );
+};
 
-export default page
+export default ProjectsPage;
