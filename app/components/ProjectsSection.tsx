@@ -6,104 +6,149 @@ import { Project } from '../types/project';
 
 interface ProjectsSectionProps {
   projects: Project[];
+  showFilters?: boolean;
+  title?: string;
+  description?: string;
 }
 
-const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
+const ProjectsSection: React.FC<ProjectsSectionProps> = ({ 
+  projects, 
+  showFilters = true,
+  title = "Featured Projects",
+  description = "Here are some of the projects I've worked on. Each one represents different skills and technologies I've mastered."
+}) => {
   const [filter, setFilter] = useState<'all' | 'featured'>('all');
+  const [selectedTech, setSelectedTech] = useState<string>('all');
 
   const filteredProjects = useMemo(() => {
+    let filtered = projects;
+    
     if (filter === 'featured') {
-      return projects.filter(project => project.featured);
+      filtered = filtered.filter(project => project.featured);
     }
-    return projects;
-  }, [projects, filter]);
+    
+    if (selectedTech !== 'all') {
+      filtered = filtered.filter(project => 
+        project.technologies.includes(selectedTech)
+      );
+    }
+    
+    return filtered;
+  }, [projects, filter, selectedTech]);
 
-  // Get all unique technologies for filtering
   const allTechnologies = useMemo(() => {
     const techSet = new Set<string>();
     projects.forEach(project => {
       project.technologies.forEach(tech => techSet.add(tech));
     });
-    return Array.from(techSet);
+    return Array.from(techSet).sort();
   }, [projects]);
 
-  const [selectedTech, setSelectedTech] = useState<string>('all');
-
-  const techFilteredProjects = useMemo(() => {
-    if (selectedTech === 'all') {
-      return filteredProjects;
-    }
-    return filteredProjects.filter(project => 
-      project.technologies.includes(selectedTech)
-    );
-  }, [filteredProjects, selectedTech]);
-
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30 dark:from-gray-900 dark:to-blue-900/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            My Projects
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium mb-6">
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+            </svg>
+            My Work
+          </div>
+          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-6 bg-gradient-to-r from-gray-900 to-blue-900 dark:from-white dark:to-blue-100 bg-clip-text text-transparent">
+            {title}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Here are some of the projects I've worked on. Each one represents
-            different skills and technologies I've mastered.
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            {description}
           </p>
         </div>
 
-        {/* Filters */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-12 gap-4">
-          <div className="flex space-x-4">
-            <button
-              onClick={() => setFilter('all')}
-              className={`px-6 py-2 rounded-lg font-medium transition-colors duration-200 ${
-                filter === 'all'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
-            >
-              All Projects
-            </button>
-            <button
-              onClick={() => setFilter('featured')}
-              className={`px-6 py-2 rounded-lg font-medium transition-colors duration-200 ${
-                filter === 'featured'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
-            >
-              Featured
-            </button>
-          </div>
+        {/* Enhanced Filters */}
+        {showFilters && (
+          <div className="flex flex-col sm:flex-row justify-between items-center mb-12 gap-6">
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => setFilter('all')}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                  filter === 'all'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
+                }`}
+              >
+                All Projects
+              </button>
+              <button
+                onClick={() => setFilter('featured')}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                  filter === 'featured'
+                    ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg shadow-orange-500/25'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                  Featured
+                </span>
+              </button>
+            </div>
 
-          <select
-            value={selectedTech}
-            onChange={(e) => setSelectedTech(e.target.value)}
-            className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="all">All Technologies</option>
-            {allTechnologies.map((tech) => (
-              <option key={tech} value={tech}>
-                {tech}
-              </option>
-            ))}
-          </select>
-        </div>
+            <div className="relative">
+              <select
+                value={selectedTech}
+                onChange={(e) => setSelectedTech(e.target.value)}
+                className="appearance-none px-6 py-3 pr-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 font-medium"
+              >
+                <option value="all">All Technologies</option>
+                {allTechnologies.map((tech) => (
+                  <option key={tech} value={tech}>
+                    {tech}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {techFilteredProjects.map((project: Project) => (
+          {filteredProjects.map((project: Project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
-        {/* Empty State */}
-        {techFilteredProjects.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400 text-lg">
-              No projects found with the selected filters.
+        {/* Enhanced Empty State */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-16">
+            <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-full flex items-center justify-center">
+              <svg className="w-10 h-10 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-600 dark:text-gray-400 mb-3">
+              No projects found
+            </h3>
+            <p className="text-gray-500 dark:text-gray-500 max-w-md mx-auto">
+              Try adjusting your filters to see more projects.
             </p>
+          </div>
+        )}
+
+        {/* View All Projects CTA */}
+        {showFilters && filteredProjects.length > 0 && (
+          <div className="text-center mt-16">
+            <button className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35">
+              View All Projects
+              <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </button>
           </div>
         )}
       </div>
