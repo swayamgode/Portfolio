@@ -33,7 +33,7 @@ const Hero = () => {
           A Passionate Full-Stack Developer Crafting Seamless Web Experiences
         </p>
       </div>
-        <SocialIcons/>
+     
     </div>
   )
 }
