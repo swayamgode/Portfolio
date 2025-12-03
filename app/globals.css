@@ -1,156 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
+@keyframes gradient {
 
-*
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-  background-color: black;
-  color: white;
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
-
-.navcon{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: left;
-  padding: 20px;
-  background-color: #000000;
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
 }
 
-.navitem{
-  padding: 10px;
-  font-weight: 600;
+@theme {
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-archivo: 'Archivo Black', sans-serif;
+  --color-accent: #ff5733;
 }
 
-.navitem:hover{
-  color: #ff5733;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.con{
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+@layer base {
+  body {
+    @apply bg-black text-white font-montserrat antialiased;
+  }
 }
 
-
-.Maincon{
-  cursor: default;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin:50px
-}
-
-.profileImg{
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  object-fit: cover;
-}
-
-.Title{
-  font-size: 2.5rem;
-  font-weight: bold;
-} 
-
-.logo{
-  height: 100px;
-  width: 170px;
-   margin: -25px 0 -25px 0; /* Adjust positioning */
-}
-
-.car{ 
-  margin-left: 30px;
-  height: 120px;
-  width: 100px;
-}
-
-/* Add to your CSS */
-.inverted {
-  filter: invert(1);
-}
-
-.container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.text
-{
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  margin-left: 30px;
-}
-.image-container {
-  position: relative;
-  display: inline-block;
-}
-
-.image-container .hover-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.image-container:hover .default-img {
-  opacity: 0;
-}
-
-.image-container:hover .hover-img {
-  opacity: 1;
-}
-
-.profileImg {
-  transition: opacity 0.3s ease;
-}
-
-.details-container{
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  text-align: justify;
-
-  width: 40%;
-  gap: 10px;
-}
-
-.details-title{
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.conte{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-html::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-html {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-.oa{
-  padding: 10px;
-  gap: 10px;
+/* Custom Utilities if needed */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500;
+  }
 }

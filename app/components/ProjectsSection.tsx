@@ -11,8 +11,8 @@ interface ProjectsSectionProps {
   description?: string;
 }
 
-const ProjectsSection: React.FC<ProjectsSectionProps> = ({ 
-  projects, 
+const ProjectsSection: React.FC<ProjectsSectionProps> = ({
+  projects,
   showFilters = true,
   title = "Featured Projects",
   description = "Here are some of the projects I've worked on. Each one represents different skills and technologies I've mastered."
@@ -22,17 +22,17 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
 
   const filteredProjects = useMemo(() => {
     let filtered = projects;
-    
+
     if (filter === 'featured') {
       filtered = filtered.filter(project => project.featured);
     }
-    
+
     if (selectedTech !== 'all') {
-      filtered = filtered.filter(project => 
+      filtered = filtered.filter(project =>
         project.technologies.includes(selectedTech)
       );
     }
-    
+
     return filtered;
   }, [projects, filter, selectedTech]);
 
@@ -45,17 +45,17 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
   }, [projects]);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30 dark:from-gray-900 dark:to-blue-900/20">
+    <section id="projects" className="py-20 bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium mb-6">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
             </svg>
             My Work
           </div>
-          <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-6 bg-gradient-to-r from-gray-900 to-blue-900 dark:from-white dark:to-blue-100 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold text-white mb-6">
             {title}
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -69,25 +69,23 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  filter === 'all'
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
-                }`}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${filter === 'all'
+                    ? 'bg-accent text-white shadow-lg shadow-accent/25'
+                    : 'bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10'
+                  }`}
               >
                 All Projects
               </button>
               <button
                 onClick={() => setFilter('featured')}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  filter === 'featured'
-                    ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg shadow-orange-500/25'
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
-                }`}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${filter === 'featured'
+                    ? 'bg-accent text-white shadow-lg shadow-accent/25'
+                    : 'bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10'
+                  }`}
               >
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                   Featured
                 </span>
@@ -98,7 +96,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               <select
                 value={selectedTech}
                 onChange={(e) => setSelectedTech(e.target.value)}
-                className="appearance-none px-6 py-3 pr-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 font-medium"
+                className="appearance-none px-6 py-3 pr-10 bg-white/5 border border-white/10 rounded-xl text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 font-medium"
               >
                 <option value="all">All Technologies</option>
                 {allTechnologies.map((tech) => (
@@ -143,7 +141,7 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({
         {/* View All Projects CTA */}
         {showFilters && filteredProjects.length > 0 && (
           <div className="text-center mt-16">
-            <button className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35">
+            <button className="group inline-flex items-center gap-3 px-8 py-4 bg-accent hover:bg-accent/80 text-white rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/35">
               View All Projects
               <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

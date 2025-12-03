@@ -1,16 +1,16 @@
 import { IconType } from 'react-icons';
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaPython, 
+import {
+  FaReact,
+  FaNodeJs,
+  FaPython,
   FaGitAlt,
   FaAws,
   FaDocker
 } from 'react-icons/fa';
-import { 
-  SiNextdotjs, 
-  SiJavascript, 
-  SiTypescript, 
+import {
+  SiNextdotjs,
+  SiJavascript,
+  SiTypescript,
   SiTailwindcss,
   SiMongodb,
   SiPostgresql,
@@ -49,21 +49,21 @@ const techStack: TechItem[] = [
 
 export default function TechStack() {
   return (
-    <section className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section className="py-16 bg-black transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">
+        <h2 className="text-4xl font-bold text-center mb-16 text-white">
           Tech Stack
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {techStack.map((tech: TechItem, index: number) => (
             <div
               key={index}
-              className="flex flex-col items-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer hover:-translate-y-1"
+              className="flex flex-col items-center p-6 bg-white/5 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer hover:-translate-y-1 border border-white/10 hover:border-accent/50"
             >
-              <tech.icon 
-                className={`w-10 h-10 ${tech.color} group-hover:scale-110 transition-transform duration-300 mb-3`} 
+              <tech.icon
+                className={`w-10 h-10 ${tech.color} group-hover:scale-110 transition-transform duration-300 mb-3`}
               />
-              <span className="text-sm font-semibold text-gray-700 dark:text-gray-200 text-center">
+              <span className="text-sm font-semibold text-gray-300 text-center">
                 {tech.name}
               </span>
             </div>

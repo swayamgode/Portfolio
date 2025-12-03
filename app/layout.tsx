@@ -10,23 +10,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body cz-shortcut-listen="true">
-     { /*  <ClickSpark
-           sparkColor='#ee7100'
-           sparkSize={10}
-           sparkRadius={15}
-           sparkCount={8}
-           duration={400}
-         >
-          */}
-      
-         <div className="con">
-                <Navbar />
-                {children}
-           </div>
-      
-         { /* </ClickSpark> */}
-         </body>
+      <body className="bg-black text-white antialiased selection:bg-accent selection:text-white">
+        <ClickSpark
+          sparkColor='#ff5733'
+          sparkSize={10}
+          sparkRadius={15}
+          sparkCount={8}
+          duration={400}
+        >
+          <Navbar />
+          <main className="min-h-screen pt-16">
+            {children}
+          </main>
+        </ClickSpark>
+      </body>
     </html>
   );
 }

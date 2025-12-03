@@ -1,16 +1,23 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Details from './components/Details'
+import React from 'react';
+import Hero from './components/Hero';
+import Details from './components/Details';
+import Experience from './components/Experience';
+import Education from './components/Education';
+import Skills from './components/Skills';
+import Achievements from './components/Achievements';
+import ProjectsSection from './components/ProjectsSection';
+import { projects } from './data/project';
+
 const page = () => {
   return (
-    <div className='container'>
-      <div>
-        <div className="text">
-         <Hero/>
-        </div>
-      </div>
-      <Details/>
+    <div className="bg-black min-h-screen pb-20">
+      <Hero />
+      <Details />
+      <Experience />
+      <Education />
+      <Skills />
+      <ProjectsSection projects={projects} />
+      <Achievements />
     </div>
   )
 }
