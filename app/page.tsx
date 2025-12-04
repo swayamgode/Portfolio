@@ -10,7 +10,7 @@ import { projects } from './data/project';
 
 const page = () => {
   return (
-    <div className="bg-black min-h-screen pb-20">
+    <div className="bg-[#0a0a0a] min-h-screen">
       <Hero />
       <Details />
       <Experience />
@@ -23,3 +23,4 @@ const page = () => {
 }
 
 export default page
+
