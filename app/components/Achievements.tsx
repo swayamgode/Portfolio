@@ -6,92 +6,56 @@ const Achievements = () => {
         {
             title: "Winner – ParkSpark Hackathon",
             year: "2025",
-            description: "Smart City Innovation project",
-            icon: "🏆",
-            gradient: "from-yellow-400 to-orange-500"
+            description: "Smart City Innovation project"
         },
         {
             title: "Runner-up – GenAI-thon",
             year: "2025",
-            description: "AI-powered content creation tool",
-            icon: "🥈",
-            gradient: "from-gray-300 to-gray-500"
+            description: "AI-powered content creation tool"
         },
         {
             title: "Active Participant",
             year: "Ongoing",
-            description: "Multiple inter-college hackathons and coding competitions",
-            icon: "🎯",
-            gradient: "from-purple-400 to-pink-500"
+            description: "Multiple inter-college hackathons and coding competitions"
         }
     ];
 
     return (
-        <section id="achievements" className="section-padding relative overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-float" />
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-            </div>
+        <section id="achievements" className="section-padding">
+            <div className="container-custom">
 
-            <div className="container-custom relative z-10">
-                <div className="text-center mb-20">
-                    <div className="inline-block mb-4">
-                        <span className="text-accent text-sm font-bold uppercase tracking-widest px-4 py-2 glass-card rounded-full">Achievements</span>
-                    </div>
-                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6">
-                        Awards & <span className="text-gradient-accent">Recognition</span>
+                {/* Section Header */}
+                <div className="text-center mb-12">
+                    <p className="section-title">ACHIEVEMENTS</p>
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-4">
+                        Awards & Recognition
                     </h2>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-lg text-[#666666] max-w-2xl mx-auto">
                         Celebrating milestones and accomplishments in my journey
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                {/* Achievement Cards */}
+                <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                     {achievements.map((item, index) => (
-                        <div
-                            key={index}
-                            className="card-premium text-center group hover:scale-110 transition-all duration-500"
-                            style={{ animationDelay: `${index * 0.1}s` }}
-                        >
-                            {/* Icon with Glow */}
-                            <div className="relative inline-block mb-6">
-                                <div className={`absolute inset-0 bg-gradient-to-r ${item.gradient} rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity`} />
-                                <div className="relative text-7xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
-                                    {item.icon}
-                                </div>
-                            </div>
+                        <div key={index} className="card text-center">
 
                             {/* Year Badge */}
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/20 to-orange-500/20 text-accent text-sm font-bold rounded-full border border-accent/30 mb-4">
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
+                            <div className="badge mx-auto mb-4">
                                 {item.year}
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-xl font-bold text-white mb-3 leading-tight group-hover:text-gradient-accent transition-all duration-300">
+                            <h3 className="text-lg font-bold text-[#1a1a1a] mb-3 leading-tight">
                                 {item.title}
                             </h3>
 
                             {/* Description */}
-                            <p className="text-gray-400 leading-relaxed">
+                            <p className="text-[#666666] leading-relaxed">
                                 {item.description}
                             </p>
-
-                            {/* Bottom Gradient Line */}
-                            <div className={`mt-6 h-1 w-full bg-gradient-to-r ${item.gradient} rounded-full`} />
                         </div>
                     ))}
-                </div>
-
-                {/* Bottom Message */}
-                <div className="text-center mt-16">
-                    <div className="inline-flex items-center gap-3 px-6 py-3 glass-card rounded-full">
-                        <span className="text-gray-400">More achievements coming soon</span>
-                        <span className="text-2xl animate-bounce">🚀</span>
-                    </div>
                 </div>
             </div>
         </section>

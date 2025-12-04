@@ -2,10 +2,10 @@ import { FaGithub, FaInstagram, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
 export default function SocialIcons() {
   const socials = [
-    { icon: FaGithub, href: 'https://github.com/yourusername', label: 'GitHub', color: 'hover:text-white' },
-    { icon: FaInstagram, href: 'https://instagram.com/yourusername', label: 'Instagram', color: 'hover:text-pink-400' },
-    { icon: FaEnvelope, href: 'mailto:swayamgode@gmail.com', label: 'Email', color: 'hover:text-accent' },
-    { icon: FaLinkedin, href: 'https://linkedin.com/in/yourusername', label: 'LinkedIn', color: 'hover:text-blue-400' },
+    { icon: FaGithub, href: 'https://github.com/yourusername', label: 'GitHub' },
+    { icon: FaInstagram, href: 'https://instagram.com/yourusername', label: 'Instagram' },
+    { icon: FaEnvelope, href: 'mailto:swayamgode@gmail.com', label: 'Email' },
+    { icon: FaLinkedin, href: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
   ];
 
   return (
@@ -18,10 +18,10 @@ export default function SocialIcons() {
             href={social.href}
             target={social.href.startsWith('mailto') ? undefined : '_blank'}
             rel={social.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-            className={`text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-110`}
+            className="text-[#666666] hover:text-[#1a1a1a] transition-colors"
             aria-label={social.label}
           >
-            <Icon size={28} />
+            <Icon size={24} />
           </a>
         );
       })}

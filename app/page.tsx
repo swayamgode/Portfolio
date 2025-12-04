@@ -10,7 +10,7 @@ import { projects } from './data/project';
 
 const page = () => {
   return (
-    <div className="bg-[#0a0a0a] min-h-screen">
+    <div className="bg-[#f5f5f0] min-h-screen">
       <Hero />
       <Details />
       <Experience />
