@@ -8,9 +8,9 @@ import Achievements from './components/Achievements';
 import ProjectsSection from './components/ProjectsSection';
 import { projects } from './data/project';
 
-const page = () => {
+const Page = () => {
   return (
-    <div className="bg-[#f5f5f0] min-h-screen">
+    <div className="min-h-screen">
       <Hero />
       <Details />
       <Experience />
@@ -19,8 +19,7 @@ const page = () => {
       <ProjectsSection projects={projects} />
       <Achievements />
     </div>
-  )
-}
+  );
+};
 
-export default page
-
+export default Page;

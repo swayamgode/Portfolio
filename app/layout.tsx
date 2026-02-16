@@ -10,16 +10,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-black text-white antialiased selection:bg-accent selection:text-white">
+      <body className="antialiased selection:bg-indigo-500 selection:text-white">
         <ClickSpark
-          sparkColor='#ff5733'
-          sparkSize={10}
-          sparkRadius={15}
-          sparkCount={8}
-          duration={400}
+          sparkColor='#6366f1'
+          sparkSize={12}
+          sparkRadius={20}
+          sparkCount={10}
+          duration={500}
         >
           <Navbar />
-          <main className="min-h-screen pt-16">
+          <main className="pt-16">
             {children}
           </main>
         </ClickSpark>
