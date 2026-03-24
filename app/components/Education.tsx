@@ -25,43 +25,55 @@ const Education = () => {
     ];
 
     return (
-        <section id="education" className="section-padding">
-            <div className="container-custom">
+        <section id="education" className="py-32 px-6 relative bg-void overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-magenta-600/5 rounded-full blur-[120px] pointer-events-none" />
 
-                {/* Section Header */}
-                <div className="text-center mb-12">
-                    <p className="section-title">EDUCATION</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a]">
-                        Academic Journey
+            <div className="max-w-7xl mx-auto relative z-10">
+
+                {/* Section Header - Left Aligned */}
+                <div className="mb-20 animate-fadeInUp">
+                    <div className="flex items-center gap-4 mb-4">
+                        <span className="w-12 h-[1px] bg-magenta-500/50"></span>
+                        <p className="text-magenta-400 font-bold tracking-[0.3em] uppercase text-[10px]">Academic_Evolution_Matrix</p>
+                    </div>
+                    <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 font-space tracking-tighter">
+                        Academic <span className="gradient-text-alt">Journey</span>
                     </h2>
                 </div>
 
-                {/* Education Cards */}
-                <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+                {/* Education Cards - Level 1 Glass */}
+                <div className="grid md:grid-cols-2 gap-10 max-w-6xl">
                     {educationData.map((edu, index) => (
-                        <div key={index} className="card">
+                        <div key={index} className="glass-level-1 rounded-[2.5rem] p-10 hover-lift rim-light group border-white/5 flex flex-col h-full">
 
-                            {/* Year Badge */}
-                            <div className="badge mb-4">
-                                {edu.year}
+                            {/* HUD Year Badge */}
+                            <div className="mb-6 flex justify-between items-center">
+                                <div className="glass-level-2 px-6 py-2 rounded-xl border-white/5 font-mono text-indigo-400 text-xs font-bold tracking-widest uppercase">
+                                    {edu.year}
+                                </div>
+                                <span className="text-[10px] font-mono text-slate-600">ST_CODE: 00{index+1}</span>
                             </div>
 
                             {/* Degree */}
-                            <h3 className="text-xl font-bold text-[#1a1a1a] mb-3">
+                            <h3 className="text-2xl font-bold text-white mb-3 font-space tracking-tight group-hover:text-indigo-400 transition-colors">
                                 {edu.degree}
                             </h3>
 
                             {/* School */}
-                            <p className="text-base font-semibold text-[#666666] mb-6">
-                                {edu.school}
-                            </p>
+                            <div className="flex items-center gap-3 mb-8">
+                                <span className="w-1.5 h-1.5 rounded-full bg-magenta-500"></span>
+                                <p className="text-lg font-bold text-slate-400 font-space tracking-tight leading-snug">
+                                    {edu.school}
+                                </p>
+                            </div>
 
-                            {/* Details */}
-                            <ul className="space-y-3">
+                            {/* Details - Technical Bullet List */}
+                            <ul className="space-y-4 mt-auto border-t border-white/5 pt-8">
                                 {edu.details.map((detail, i) => (
-                                    <li key={i} className="text-[#666666] flex items-start gap-3">
-                                        <span className="text-[#1a1a1a] mt-1">•</span>
-                                        <span className="text-sm">{detail}</span>
+                                    <li key={i} className="text-slate-400 flex items-start gap-4 group/item">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500/30 mt-2 flex-shrink-0 group-hover/item:bg-indigo-500 transition-colors" />
+                                        <span className="text-sm font-light leading-relaxed group-hover/item:text-slate-200 transition-colors">{detail}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -74,3 +86,4 @@ const Education = () => {
 };
 
 export default Education;
+
