@@ -74,7 +74,7 @@ const Navbar = () => {
             >
               {item.label}
               {activeSection === item.id && pathname === '/' && (
-                <span className="absolute -bottom-1 left-0 right-0 h-[1px] bg-white rounded-full" />
+                <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#a3e635] rounded-full" />
               )}
             </button>
           ))}

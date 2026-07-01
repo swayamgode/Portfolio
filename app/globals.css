@@ -167,7 +167,14 @@ html {
   display: block;
   width: 100%;
   height: 3px;
-  background: #ffffff;
   margin-top: 4px;
   border-radius: 2px;
+}
+
+.section-title-green::after {
+  background: #a3e635; /* lime-400 */
+}
+
+.section-title-pink::after {
+  background: #fda4af; /* rose-300 */
 }

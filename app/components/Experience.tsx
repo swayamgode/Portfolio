@@ -8,7 +8,7 @@ const Experience = () => {
         <div className="grid md:grid-cols-2 gap-16">
           {/* Experience */}
           <div>
-            <h2 className="section-title text-xl md:text-2xl mb-8">Experience</h2>
+            <h2 className="section-title section-title-pink text-xl md:text-2xl mb-8">Experience</h2>
             <div className="space-y-6">
               <div>
                 <h3 className="text-white font-bold text-base">
@@ -23,7 +23,7 @@ const Experience = () => {
 
           {/* Education */}
           <div>
-            <h2 className="section-title text-xl md:text-2xl mb-8">Education</h2>
+            <h2 className="section-title section-title-green text-xl md:text-2xl mb-8">Education</h2>
             <div className="space-y-6">
               <div>
                 <h3 className="text-white font-semibold text-sm">

@@ -33,7 +33,7 @@ const Skills = () => {
       <div className="max-w-4xl mx-auto">
         {/* Section Title */}
         <div className="text-center mb-10">
-          <h2 className="section-title text-xl md:text-2xl">Skills</h2>
+          <h2 className="section-title section-title-pink text-xl md:text-2xl">Skills</h2>
         </div>
 
         {/* Skills Grid - circular icons */}

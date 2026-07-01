@@ -7,13 +7,13 @@ const Hero = () => {
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-6">
           {/* Profile Image */}
-          <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-zinc-700 flex-shrink-0">
+          <div className="w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-[3px] border-[#a3e635] flex-shrink-0 shadow-[0_0_20px_rgba(163,230,53,0.15)]">
             <img
-              src="/profile.png"
+              src="/profile3.png"
               alt="Swayam Gode"
               className="w-full h-full object-cover"
               onError={(e) => {
-                e.currentTarget.src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=256";
+                e.currentTarget.src = "/profile.png";
               }}
             />
           </div>

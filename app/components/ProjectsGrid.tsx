@@ -16,7 +16,7 @@ const ProjectsGrid = () => {
       <div className="max-w-4xl mx-auto">
         {/* Section Title */}
         <div className="text-center mb-10">
-          <h2 className="section-title text-xl md:text-2xl">My Projects</h2>
+          <h2 className="section-title section-title-green text-xl md:text-2xl">My Projects</h2>
         </div>
 
         {/* Projects Grid - 3 cols top, 3 cols bottom (2 wider + 1) */}
