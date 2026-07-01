@@ -7,9 +7,9 @@ const Hero = () => {
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-6">
           {/* Profile Image */}
-          <div className="w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-[3px] border-[#a3e635] flex-shrink-0 shadow-[0_0_20px_rgba(163,230,53,0.15)]">
+          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden flex-shrink-0">
             <img
-              src="/profile3.png"
+              src="/profile_krishna.png"
               alt="Swayam Gode"
               className="w-full h-full object-cover"
               onError={(e) => {
@@ -20,14 +20,18 @@ const Hero = () => {
 
           {/* Name and Info */}
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight flex items-center gap-2">
-              SWAYAM GODE. <span className="text-2xl">🤟</span>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight flex items-center gap-2">
+              <span className="relative pb-1">
+                SWAYAM GODE.
+                <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#fda4af] rounded-full" />
+              </span>
+              <span className="text-2xl">👋</span>
             </h1>
-            <p className="text-zinc-400 text-sm mt-1 font-medium">
+            <p className="text-zinc-350 text-base md:text-lg mt-2 font-medium">
               Web Developer | Data Analyst | Tech Enthusiast
             </p>
-            <p className="text-zinc-600 text-xs mt-2 max-w-md leading-relaxed">
-              I love Designing and developing always looking to learn new build new
+            <p className="text-zinc-500 text-sm mt-2 max-w-lg leading-relaxed">
+              I love Designing and developming always looking to learn new build new .
             </p>
           </div>
         </div>
