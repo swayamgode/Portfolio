@@ -14,21 +14,25 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="antialiased selection:bg-indigo-500 selection:text-white">
+      <head>
+        <title>Swayam Gode - Portfolio</title>
+        <meta name="description" content="Swayam Gode - Web Developer | Data Analyst | Tech Enthusiast" />
+      </head>
+      <body className="antialiased bg-black text-white">
         {isPresentPage ? (
           <main className="h-screen w-screen overflow-hidden bg-black text-white">
             {children}
           </main>
         ) : (
           <ClickSpark
-            sparkColor='#6366f1'
-            sparkSize={12}
-            sparkRadius={20}
-            sparkCount={10}
-            duration={500}
+            sparkColor='#ffffff'
+            sparkSize={10}
+            sparkRadius={18}
+            sparkCount={8}
+            duration={400}
           >
             <Navbar />
-            <main className="pt-16">
+            <main className="pt-14">
               {children}
             </main>
           </ClickSpark>

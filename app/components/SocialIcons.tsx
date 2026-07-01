@@ -18,7 +18,7 @@ export default function SocialIcons() {
             href={social.href}
             target={social.href.startsWith('mailto') ? undefined : '_blank'}
             rel={social.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-            className="text-[#666666] hover:text-[#1a1a1a] transition-colors"
+            className="text-zinc-400 hover:text-orange-500 transition-colors"
             aria-label={social.label}
           >
             <Icon size={24} />

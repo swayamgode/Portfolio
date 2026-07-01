@@ -2,64 +2,41 @@
 import React from 'react';
 
 const Achievements = () => {
-    const achievements = [
-        {
-            title: "Winner – ParkSpark Hackathon",
-            year: "2025",
-            description: "Smart City Innovation project"
-        },
-        {
-            title: "Runner-up – GenAI-thon",
-            year: "2025",
-            description: "AI-powered content creation tool"
-        },
-        {
-            title: "Active Participant",
-            year: "Ongoing",
-            description: "Multiple inter-college hackathons and coding competitions"
-        }
-    ];
+  const achievements = [
+    {
+      title: "Winner of Park Spark Hackathon",
+      description: "Designed and developed Sure-Image and Prasanaa Homes websites make sure to keep ui clean and user friendly. Designed and developed Sure-Image and P rasanaa Homes websites make sure to keep ui clean and user friendly."
+    },
+    {
+      title: "Runner-up of Gen-Ai Hackathon",
+      description: "Designed and developed Sure-Image and Prasanaa Homes websites make sure to keep ui clean and user friendly. Designed and developed Sure-Image and P rasanaa Homes websites make sure to keep ui clean and user friendly."
+    }
+  ];
 
-    return (
-        <section id="achievements" className="section-padding">
-            <div className="container-custom">
+  return (
+    <section id="achievements" className="py-16 px-6 bg-black">
+      <div className="max-w-4xl mx-auto">
+        {/* Section Title */}
+        <div className="text-center mb-10">
+          <h2 className="section-title text-xl md:text-2xl">Achivements</h2>
+        </div>
 
-                {/* Section Header */}
-                <div className="text-center mb-12">
-                    <p className="section-title">ACHIEVEMENTS</p>
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-4">
-                        Awards & Recognition
-                    </h2>
-                    <p className="text-lg text-[#666666] max-w-2xl mx-auto">
-                        Celebrating milestones and accomplishments in my journey
-                    </p>
-                </div>
-
-                {/* Achievement Cards */}
-                <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                    {achievements.map((item, index) => (
-                        <div key={index} className="card text-center">
-
-                            {/* Year Badge */}
-                            <div className="badge mx-auto mb-4">
-                                {item.year}
-                            </div>
-
-                            {/* Title */}
-                            <h3 className="text-lg font-bold text-[#1a1a1a] mb-3 leading-tight">
-                                {item.title}
-                            </h3>
-
-                            {/* Description */}
-                            <p className="text-[#666666] leading-relaxed">
-                                {item.description}
-                            </p>
-                        </div>
-                    ))}
-                </div>
+        {/* Achievements List */}
+        <div className="space-y-8 max-w-2xl mx-auto">
+          {achievements.map((achievement, index) => (
+            <div key={index}>
+              <h3 className="text-white font-bold text-base mb-2">
+                {achievement.title}
+              </h3>
+              <p className="text-zinc-500 text-sm leading-relaxed">
+                {achievement.description}
+              </p>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Achievements;

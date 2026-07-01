@@ -1,23 +1,20 @@
 import React from 'react';
 import Hero from './components/Hero';
-import Details from './components/Details';
+import ProjectsGrid from './components/ProjectsGrid';
 import Experience from './components/Experience';
-import Education from './components/Education';
 import Skills from './components/Skills';
 import Achievements from './components/Achievements';
-import ProjectsSection from './components/ProjectsSection';
-import { projects } from './data/project';
+import Contact from './components/Contact';
 
 const Page = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-black">
       <Hero />
-      <Details />
+      <ProjectsGrid />
       <Experience />
-      <Education />
       <Skills />
-      <ProjectsSection projects={projects} />
       <Achievements />
+      <Contact />
     </div>
   );
 };
