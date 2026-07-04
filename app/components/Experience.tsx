@@ -1,13 +1,7 @@
 'use client';
 import React from 'react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const Experience = () => {
-  const { ref: expRef, isVisible: expVisible } = useScrollReveal<HTMLDivElement>();
-  const { ref: eduRef, isVisible: eduVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.1 });
-  const { ref: expTitleRef, isVisible: expTitleVisible } = useScrollReveal<HTMLHeadingElement>();
-  const { ref: eduTitleRef, isVisible: eduTitleVisible } = useScrollReveal<HTMLHeadingElement>();
-
   return (
     <section id="experience" className="py-16 px-6 bg-black">
       <div className="max-w-4xl mx-auto">
@@ -15,23 +9,16 @@ const Experience = () => {
 
           {/* Experience */}
           <div>
-            <h2
-              ref={expTitleRef}
-              className={`section-title section-title-pink text-xl md:text-2xl mb-8 ${expTitleVisible ? 'is-visible' : ''}`}
-            >
+            <h2 className="section-title section-title-always section-title-pink text-xl md:text-2xl mb-8">
               Experience
             </h2>
-            <div
-              ref={expRef}
-              className={`space-y-6 reveal reveal-left ${expVisible ? 'is-visible' : ''}`}
-            >
+            <div className="space-y-6">
               <div>
                 <h3 className="text-white font-bold text-base">
-                  Rebenok Infotech — Web Designer Intern
+                  Rebenok Infotech - Web Designer Intern
                 </h3>
                 <p className="text-zinc-500 text-sm mt-2 leading-relaxed">
-                  Designed and developed Sure-Image and Prasanaa Homes websites,
-                  keeping the UI clean and user-friendly.
+                  Designed and developed Sure-Image and Prasanaa Homes websites make sure to keep ui clean and user friendly. Designed and developed Sure-Image and P rasanaa Homes websites make sure to keep ui clean and user friendly.
                 </p>
               </div>
             </div>
@@ -39,16 +26,10 @@ const Experience = () => {
 
           {/* Education */}
           <div>
-            <h2
-              ref={eduTitleRef}
-              className={`section-title section-title-green text-xl md:text-2xl mb-8 ${eduTitleVisible ? 'is-visible' : ''}`}
-            >
+            <h2 className="section-title section-title-always section-title-green text-xl md:text-2xl mb-8">
               Education
             </h2>
-            <div
-              ref={eduRef}
-              className={`space-y-6 reveal reveal-right ${eduVisible ? 'is-visible' : ''}`}
-            >
+            <div className="space-y-6">
               <div>
                 <h3 className="text-white font-semibold text-sm">
                   Diploma in Computer Engineering
@@ -59,7 +40,7 @@ const Experience = () => {
                 <h3 className="text-white font-semibold text-sm">
                   BE in Artificial Intelligence and Data Science
                 </h3>
-                <p className="text-zinc-500 text-sm">Vidyavardhini&apos;s College of Engineering</p>
+                <p className="text-zinc-500 text-sm">Vidyavardhini&apos;s College of Engineeering</p>
               </div>
             </div>
           </div>
