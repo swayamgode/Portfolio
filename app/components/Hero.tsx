@@ -7,22 +7,16 @@ const Hero = () => {
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-6">
 
-          {/* Profile Image wrapper — fades in */}
-          <div
-            className="w-32 h-32 md:w-36 md:h-36 flex-shrink-0 animate-fadeInUp opacity-0"
-            style={{ animationFillMode: 'forwards' }}
-          >
-            {/* Inner ring — pulse ring lives here separately */}
-            <div className="w-full h-full rounded-full overflow-hidden animate-ring-pulse">
-              <img
-                src="/profile_krishna.png"
-                alt="Swayam Gode"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = "/profile.png";
-                }}
-              />
-            </div>
+          {/* Profile Image */}
+          <div className="w-44 h-44 md:w-48 md:h-48 flex-shrink-0 rounded-full overflow-hidden">
+            <img
+              src="/profile_krishna.png"
+              alt="Swayam Gode"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "/profile.png";
+              }}
+            />
           </div>
 
           {/* Name and Info — staggered reveal */}
