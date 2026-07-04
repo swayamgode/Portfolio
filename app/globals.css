@@ -7,65 +7,87 @@ html {
   background-color: #000000;
 }
 
-/* Modern Animations */
+/* ===================== KEYFRAMES ===================== */
+
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
 }
 
 @keyframes subtleGlow {
-  0%, 100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.7; }
 }
 
 @keyframes scan {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(320px); }
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(320px); }
   100% { transform: translateY(0); }
 }
 
-/* Theme Configuration */
+/* Scroll Reveal – starts hidden, animated to visible via JS class */
+@keyframes revealFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealFadeLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes revealFadeRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Shimmer sweep for the name underline */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* Navbar slide-down on load */
+@keyframes navSlideDown {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Blinking cursor for typing effect */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Subtle pulse ring for profile photo */
+@keyframes ringPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(253, 164, 175, 0.35); }
+  70%  { box-shadow: 0 0 0 14px rgba(253, 164, 175, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(253, 164, 175, 0); }
+}
+
+/* Stagger pop for skill icons */
+@keyframes iconPop {
+  from { opacity: 0; transform: scale(0.6) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ===================== THEME ===================== */
 @theme {
   --font-inter: 'Inter', sans-serif;
   --font-space: 'Space Grotesk', sans-serif;
@@ -81,12 +103,7 @@ html {
     overflow-x: hidden;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-space);
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -96,64 +113,97 @@ html {
 
 @layer utilities {
 
-  /* Animations */
-  .animate-fadeInUp {
-    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  /* ---- Legacy animations ---- */
+  .animate-fadeInUp   { animation: fadeInUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .animate-slideInLeft  { animation: slideInLeft 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .animate-slideInRight { animation: slideInRight 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .animate-float        { animation: float 4s ease-in-out infinite; }
+  .animate-subtleGlow   { animation: subtleGlow 3s ease-in-out infinite; }
+
+  /* ---- Navbar ---- */
+  .animate-navSlideDown {
+    animation: navSlideDown 0.55s cubic-bezier(0.16,1,0.3,1) both;
   }
 
-  .animate-slideInLeft {
-    animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  /* ---- Scroll Reveal base (hidden by default) ---- */
+  .reveal {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+                transform 0.7s cubic-bezier(0.16,1,0.3,1);
   }
 
-  .animate-slideInRight {
-    animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  .reveal-up   { transform: translateY(28px); }
+  .reveal-left  { transform: translateX(-28px); }
+  .reveal-right { transform: translateX(28px); }
+
+  /* When JS adds .is-visible: */
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 
-  .animate-float {
-    animation: float 4s ease-in-out infinite;
+  /* ---- Shimmer name underline ---- */
+  .shimmer-underline {
+    background: linear-gradient(
+      90deg,
+      #fda4af 0%,
+      #ffffff 40%,
+      #fda4af 60%,
+      #fda4af 100%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
   }
 
-  .animate-subtleGlow {
-    animation: subtleGlow 3s ease-in-out infinite;
+  /* ---- Profile ring pulse ---- */
+  .animate-ring-pulse {
+    animation: ringPulse 2.4s ease-out infinite;
   }
 
-  /* Delays */
+  /* ---- Typing cursor blink ---- */
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  /* ---- Skill icon stagger ---- */
+  .animate-icon-pop {
+    animation: iconPop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+
+  /* ---- Delays ---- */
+  .delay-50  { animation-delay: 0.05s; }
   .delay-100 { animation-delay: 0.1s; }
+  .delay-150 { animation-delay: 0.15s; }
   .delay-200 { animation-delay: 0.2s; }
+  .delay-250 { animation-delay: 0.25s; }
   .delay-300 { animation-delay: 0.3s; }
+  .delay-350 { animation-delay: 0.35s; }
   .delay-400 { animation-delay: 0.4s; }
+  .delay-450 { animation-delay: 0.45s; }
   .delay-500 { animation-delay: 0.5s; }
   .delay-600 { animation-delay: 0.6s; }
+  .delay-700 { animation-delay: 0.7s; }
+  .delay-800 { animation-delay: 0.8s; }
 
-  /* Hover Effects */
+  /* ---- Hover lift ---- */
   .hover-lift {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
   }
+  .hover-lift:hover { transform: translateY(-4px); }
 
-  .hover-lift:hover {
-    transform: translateY(-4px);
-  }
-
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #000000;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+  /* ---- Custom Scrollbar ---- */
+  ::-webkit-scrollbar       { width: 6px; }
+  ::-webkit-scrollbar-track { background: #000000; }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: #555; }
 }
 
-/* Section heading underline style */
+/* ===================== SECTION TITLES ===================== */
 .section-title {
   display: inline-block;
   position: relative;
@@ -169,12 +219,15 @@ html {
   height: 3px;
   margin-top: 4px;
   border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
 }
 
-.section-title-green::after {
-  background: #a3e635; /* lime-400 */
+.section-title.is-visible::after,
+.section-title-always::after {
+  transform: scaleX(1);
 }
 
-.section-title-pink::after {
-  background: #fda4af; /* rose-300 */
-}
+.section-title-green::after { background: #a3e635; }
+.section-title-pink::after  { background: #fda4af; }

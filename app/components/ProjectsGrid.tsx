@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const ProjectsGrid = () => {
   const projectImages = [
@@ -78,20 +79,24 @@ const ProjectsGrid = () => {
     },
   ];
 
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal<HTMLDivElement>();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.05 });
+
   return (
     <section id="projects" className="py-20 px-6 bg-black">
       <div className="max-w-4xl mx-auto">
         {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="section-title section-title-green text-xl md:text-2xl">My Projects</h2>
+        <div className="text-center mb-12" ref={titleRef}>
+          <h2 className={`section-title section-title-green text-xl md:text-2xl ${titleVisible ? 'is-visible' : ''}`}>My Projects</h2>
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:auto-rows-[180px]">
-          {projectImages.map((project) => (
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:auto-rows-[180px]">
+          {projectImages.map((project, idx) => (
             <div
               key={project.id}
-              className={`relative rounded-2xl bg-zinc-900/30 border border-zinc-800/60 overflow-hidden hover:border-[#fda4af]/40 hover:shadow-[0_8px_30px_rgba(253,164,175,0.08)] transition-all duration-500 hover:-translate-y-1.5 group cursor-pointer min-h-[260px] md:min-h-0 ${project.gridClass}`}
+              className={`relative rounded-2xl bg-zinc-900/30 border border-zinc-800/60 overflow-hidden hover:border-[#fda4af]/40 hover:shadow-[0_8px_30px_rgba(253,164,175,0.08)] transition-all duration-500 hover:-translate-y-1.5 group cursor-pointer min-h-[260px] md:min-h-0 reveal reveal-up ${gridVisible ? 'is-visible' : ''} ${project.gridClass}`}
+              style={{ transitionDelay: `${idx * 0.08}s` }}
             >
               {/* Full background image */}
               <img

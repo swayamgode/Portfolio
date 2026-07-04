@@ -54,7 +54,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 animate-navSlideDown ${
         scrolled 
           ? 'bg-black/90 backdrop-blur-md border-b border-white/5' 
           : 'bg-transparent'
@@ -62,19 +62,21 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-center">
         <div className="flex items-center gap-10">
-          {navItems.map((item) => (
+          {navItems.map((item, i) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className={`relative text-sm font-medium transition-all duration-300 ${
-                activeSection === item.id && pathname === '/'
+              style={{ animationDelay: `${0.05 + i * 0.07}s` }}
+              className={`relative text-sm font-medium transition-all duration-300
+                animate-fadeInUp opacity-0
+                ${activeSection === item.id && pathname === '/'
                   ? 'text-white'
                   : 'text-zinc-500 hover:text-white'
-              }`}
+                }`}
             >
               {item.label}
               {activeSection === item.id && pathname === '/' && (
-                <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#a3e635] rounded-full" />
+                <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#a3e635] rounded-full transition-all duration-300" />
               )}
             </button>
           ))}
